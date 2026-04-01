@@ -211,32 +211,8 @@ Possible future improvements for this repository include:
 - add more visual examples and experiment logs
 - improve reproducibility with clearer dataset setup instructions
 
-## References
 
-1. Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun,  
-   **Deep Residual Learning for Image Recognition**  
-   https://arxiv.org/abs/1512.03385
 
-2. Tsung-Yi Lin, Piotr Dollár, Ross Girshick, Kaiming He, Bharath Hariharan, Serge Belongie,  
-   **Feature Pyramid Networks for Object Detection**  
-   https://arxiv.org/abs/1612.03144
-
-3. Olaf Ronneberger, Philipp Fischer, Thomas Brox,  
-   **U-Net: Convolutional Networks for Biomedical Image Segmentation**  
-   https://arxiv.org/abs/1505.04597
-
-## Acknowledgment
-
-This repository is based on or adapted from earlier work on satellite image segmentation using Light U-Net / FPN-style design for the 2017 CCF BDCI remote sensing challenge.
-
-If you are reusing or extending an existing implementation, it is good practice to keep proper attribution to the original authors and repository.
-
-## Author
-
-**Muhammad Ilyas Raza**  
-Machine Learning Engineer | Computer Vision | Robotics | Applied AI
-
-GitHub: [Ilyas-Raza1214](https://github.com/Ilyas-Raza1214)
 
 ## License
 
