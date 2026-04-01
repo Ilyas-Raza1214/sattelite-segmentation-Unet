@@ -24,8 +24,8 @@ The original framework was used in the **2017 CCF BDCI Remote Sensing Image Sema
 ## Preview
 
 <p align="center">
-  <img src="./sample_visible.png" alt="Satellite Input Image" width="40%">
-  <img src="./sample_result.png" alt="Segmentation Result" width="40%">
+  <img src="/sample_visible.png" alt="Satellite Input Image" width="40%">
+  <img src="/sample_result.png" alt="Segmentation Result" width="40%">
 </p>
 
 ## Environment
