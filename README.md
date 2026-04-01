@@ -1,106 +1,55 @@
-# Light UNet for Satellite Image Segmentation
+# Satellite Image Segmentation with Light U-Net
 
-A Tensorflow implentation of light UNet semantic segmentation framework.
+A TensorFlow implementation of a lightweight U-Net style semantic segmentation framework for satellite and remote sensing imagery.
 
-The framework was used in 2017 CCF BDCI remote sensing image semantic segmentation challenge and achieved 0.891 accuracy.
+This project focuses on pixel-wise segmentation of aerial images and demonstrates a practical deep learning workflow for remote sensing image analysis.
 
+## Overview
 
+Semantic segmentation is an important task in remote sensing, where each pixel in an image is assigned to a semantic class such as **road**, **building**, **water**, or **background**.
 
-## Configuration Environment
+This repository implements a **Light U-Net** framework for satellite image segmentation using **TensorFlow 1.x**. The architecture combines efficient encoder-decoder design with residual-style blocks and pyramid-style upsampling to produce detailed segmentation masks.
 
-Ubuntu 16.04 + python2.7 + tensorflow1.3 + opencv3.2 + cuda8.0 
+The original framework was used in the **2017 CCF BDCI Remote Sensing Image Semantic Segmentation Challenge** and reportedly achieved **0.891 accuracy**.
 
-This project implement by gpu version of tensorflow1.3. Therefore a Nvidia GPU is needed.
+## Key Features
 
-## Installation
+- Lightweight U-Net style segmentation framework
+- Designed for remote sensing and satellite image analysis
+- TensorFlow-based training and inference pipeline
+- Residual-style convolution blocks
+- Pyramid-like upsampling structure
+- Example qualitative results included
 
-1. Clone the repository
+## Preview
 
-   ```shell
-   git clone https://github.com/YudeWang/UNet-Satellite-Image-Segmentation.git
-   ```
+<p align="center">
+  <img src="./sample_visible.png" alt="Satellite Input Image" width="40%">
+  <img src="./sample_result.png" alt="Segmentation Result" width="40%">
+</p>
 
-2. Install PyDenseCRF
+## Environment
 
-   You can follow the install instruction of [PyDenseCRF](https://github.com/lucasb-eyer/pydensecrf)
+This project was originally developed with the following environment:
 
-   If you **do not have the permission of sudo**, you can download the source code by:
+- Ubuntu 16.04
+- Python 2.7
+- TensorFlow 1.3
+- OpenCV 3.2
+- CUDA 8.0
 
-   ```shell
-   git clone https://github.com/lucasb-eyer/pydensecrf.git
-   ```
+> This is a legacy TensorFlow 1.x implementation. A compatible NVIDIA GPU environment is recommended for training and testing.
 
-   Follow the instruction and install:
+## Repository Structure
 
-   ```shell
-   cd pydensecrf-master
-   python setup.py install
-   ```
-
-3. Download dataset and model
-
-   You can download 2017 CCF BDCI remote sensing challenge dataset and our pre-trained model from [here](https://drive.google.com/file/d/1FMRMe4qSI-JS6AzrO8kASO3BfHOLoUfM/view). Please unzip package in this repository folder and change the ckpt file name to **UNet_ResNet_itr100000.ckpt**(I used to call it FPN, while the structure of network is symmetrical and then rename it).
-
-
-## Network Structure
-
-This network use Feature Pyramid Network architecture, each up-sampling layer use linear interpolation instead of de-convolution. Convolution structure we use residual-block, which including convolution and down-sampling (convolution with stride=2). A condition random field(CRF) is added at the end of network with size 256\*256\*512. The loss function is soft-max cross-entropy.
-
-The detail of network architecture can be found in factory.py
-
-
-
-## Dataset
-
-The dataset can be found in [here](https://github.com/linsong8208/Satellite-image-segment/tree/master/BDCI/0_data).
-
-Original training data and label is given by png format, each pixel has RGB information. 
-
-In **BDCI-jiage** folder, the labels are plane(1), **road(2), building(3), water(4)**, and the other(0);
-
-In **BDCI-jiage-Semi** folder, the labels are plane(1), **building(2), water(3), road(4)**, and  the other(0).
-
-To generate training dataset, we random select 1024\*1024 patch of original map and scale it into 256\*256. For data augmentation, four kinds of rotation transformation( 0, 90, 180, 270 degree) and minor transformation are applied. You can use following instruction to generate TFRecord format dataset.
-
-```shell
-python dataset.py
-```
-
-
-
-## Train
-
-You can run train.py for training, but **please check training parameters at first**. This code can run on single GPU by following instruction:
-
-```shell
-python train.py --gpu=0
-```
-
-Training result model will be saved in model folder with name UNet\_ResNet\_itrxxxxxx.ckpt
-
-
-
-## Test
-
-We provide pre-trained model **UNet_ResNet_itr100000.ckpt**.
-
-You can use test.py to generate segmentation result.
-
-```shell
-python test.py --gpu=0
-```
-
-The test result picture can be found in BDCI2017-jiage-Semi/test/x_result.png
-
-
-
-<div align="left"> 
-
-<img src="https://github.com/YudeWang/UNet-Satellite-Image-Segmentation/blob/master/sample_visible.png?raw=true" height="40%" width="40%">    <img src="https://github.com/YudeWang/UNet-Satellite-Image-Segmentation/blob/master/sample_result.png?raw=true" height="40%" width="40%">
-
-</div>
-
-## References
-1. K. He, X. Zhang, S. Ren, and J. Sun, “[Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385),” arXiv:1512.03385, 2015.
-2. Tsung-Yi Lin, Piotr Dollár, Ross Girshick, Kaiming He, Bharath Hariharan, Serge Belongie,"[Feature Pyramid Networks for Object Detection](https://arxiv.org/abs/1612.03144)," arXiv:1612.03144,2016. 
-3. Olaf Ronneberger, Philipp Fischer, Thomas Brox, "[U-Net: Convolutional Networks for Biomedical Image Segmentation.]( https://arxiv.org/abs/1505.04597)," arXiv:1505.04597.
+```text
+.
+├── Network.py                 # network architecture
+├── dataset-processing.py      # dataset preparation and preprocessing
+├── train.py                   # model training
+├── test-model.py              # inference / testing
+├── utils.py                   # helper functions
+├── sample_visible.png         # example input image
+├── sample_result.png          # example segmentation output
+├── LICENSE
+└── README.md´´´´
